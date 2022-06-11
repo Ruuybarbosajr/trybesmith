@@ -7,6 +7,7 @@ const app = express();
 app.use(express.json());
 app.use('/products', routes.products);
 app.use('/users', routes.users);
+app.use('/orders', routes.orders);
 
 app.use((
   error: IError,

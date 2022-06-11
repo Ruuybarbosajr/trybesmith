@@ -21,4 +21,10 @@ export default class {
       amount: newProduct.amount,
     };
   }
+
+  public async getByFk(fk: number): Promise<IProduct[]> {
+    const [products] = await 
+    this.connection.execute('SELECT * FROM Trybesmith.Products WHERE orderId=?', [fk]);
+    return products as IProduct[];
+  }
 }
