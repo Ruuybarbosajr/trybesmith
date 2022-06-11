@@ -1,5 +1,5 @@
 import ProductsModel from '../models/products.model';
-import IProduct from '../interfaces/product.interface';
+import { INewProduct, IProduct } from '../interfaces/product.interface';
 
 export default class {
   private model = new ProductsModel();
@@ -7,5 +7,10 @@ export default class {
   public async getAll(): Promise<IProduct[]> {
     const products = await this.model.getAll();
     return products;
+  }
+
+  async create({ name, amount }: INewProduct):Promise<Omit<IProduct, 'orderId'>> {
+    const newProduct = await this.model.create({ name, amount });
+    return newProduct;
   }
 }
