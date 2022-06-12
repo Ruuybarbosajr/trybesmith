@@ -5,3 +5,8 @@ export interface IUser {
   level: number,
   password: string
 }
+
+export interface IUserToEnter {
+  username: string,
+  password: string
+}

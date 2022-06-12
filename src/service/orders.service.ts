@@ -1,19 +1,15 @@
+import { IOrder } from '../interfaces/order.interface';
 import OrdersModel from '../models/orders.model';
 import ProductsModel from '../models/products.model';
 
-const modelOrders = new OrdersModel();
-const modelProducts = new ProductsModel();
-
 export default class {
-  private model = modelOrders;
+  private modelOrders = new OrdersModel();
 
-  private modelProducts = modelProducts;
+  private modelProducts = new ProductsModel();
 
-  public async getAll() {
-    const orders = await this.model.getAll();
-
+  public async getAll(): Promise<IOrder[]> {
+    const orders = await this.modelOrders.getAll();
     const productsByOrderId = orders.map((order) => this.modelProducts.getByFk(order.id));
-
     const products = await Promise.all(productsByOrderId);
 
     orders.forEach((_, index: number) => {

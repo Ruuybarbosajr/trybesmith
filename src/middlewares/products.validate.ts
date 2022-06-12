@@ -19,9 +19,7 @@ export default class {
 
   public validateBody(req: Request, _res: Response, next: NextFunction): void {
     const { name, amount } = req.body as INewProduct;
-
     const { error } = this.schemaBody.validate({ name, amount });
-
     if (error) next({ status: 400, message: error.message });
 
     next();
@@ -29,9 +27,7 @@ export default class {
 
   public validateContent(req: Request, _res: Response, next: NextFunction): void {
     const { name, amount } = req.body as INewProduct;
-
     const { error } = this.schemaContent.validate({ name, amount });
-
     if (error) next({ status: 422, message: error.message });
 
     next();

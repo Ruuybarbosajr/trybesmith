@@ -17,4 +17,10 @@ export default class {
       level: newUser.level,
     };
   }
+
+  public async getByUsername(username: string): Promise<IUser[]> {
+    const [user] = await this.connection.execute(`
+    SELECT * FROM Trybesmith.Users WHERE username=?`, [username]);
+    return user as IUser[];
+  }
 }
