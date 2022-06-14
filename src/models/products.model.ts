@@ -27,4 +27,9 @@ export default class {
     this.connection.execute('SELECT * FROM Trybesmith.Products WHERE orderId=?', [fk]);
     return products as IProduct[];
   }
+
+  public async updateFk(productId: number, orderId: number): Promise<void> {
+    await this.connection.execute(`
+    UPDATE Trybesmith.Products SET orderId=? WHERE id=?`, [orderId, productId]);
+  }
 }

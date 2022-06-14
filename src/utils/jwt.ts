@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+import jwt, { JwtPayload } from 'jsonwebtoken';
 import { IUser } from '../interfaces/user.interface';
 
 export default class {
@@ -16,8 +16,8 @@ export default class {
     return token;
   }
 
-  public decode(token: string) {
+  public decode(token: string): JwtPayload {
     const decoded = jwt.verify(token, this.secret);
-    return decoded as Omit<IUser, 'password'>;
+    return decoded as JwtPayload;
   }
 }

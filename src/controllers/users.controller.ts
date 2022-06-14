@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { IUser } from '../interfaces/user.interface';
+import { INewUser } from '../interfaces/user.interface';
 import UsersService from '../service/users.service';
 
 export default class {
@@ -10,7 +10,7 @@ export default class {
     res: Response, 
     next: NextFunction,
   ): Promise<Response<{ token: string }> | void> {
-    const { username, classe, level, password } = req.body as IUser;
+    const { username, classe, level, password } = req.body as INewUser;
     try {
       const token = await this.service.create({ username, classe, level, password });
       return res.status(201).json({ token });
