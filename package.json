@@ -8,7 +8,7 @@
     "dev": "nodemon --watch \"./src/**\" --ext \"ts,js\" --ignore \"src/**/*.spec.ts,src/**/*.json\" --exec \"ts-node src/index.ts\"",
     "test": "jest",
     "posttest": "ts-node tests/recreateDatabase.ts",
-    "restore": "ts-node tests/recreateDatabase.ts",
+    "restore": "ts-node ./restoreDB.ts",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "keywords": [],
@@ -42,6 +42,7 @@
     "express-async-errors": "3.1.1",
     "joi": "17.6.0",
     "jsonwebtoken": "8.5.1",
+    "mysql-import": "^5.0.21",
     "mysql2": "2.3.0"
   }
 }
